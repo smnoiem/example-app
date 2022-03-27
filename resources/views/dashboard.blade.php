@@ -49,6 +49,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content p-3 text-muted">
                         <div class="tab-pane active" id="adduser" role="tabpanel">
+                            @include('layouts.new-user-form')
                             <p class="mb-0">
                                 *. Create a form here and include fields like name,email,password,address,roles. <br>
                                 *. A submit button to submit the form data via ajax. <br>
