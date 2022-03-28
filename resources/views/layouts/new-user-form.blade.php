@@ -7,6 +7,7 @@
   <div class="form-group">
     <label for="email">*Email address:</label>
     <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+    <div id="email-exists" class="error" for="email" style="display: none;"></div>
   </div>
   <div class="form-group">
     <label for="password">*Password:</label>
@@ -23,11 +24,8 @@
   <div class="form-group">
     <label for="role">*Role:</label>
     <select class="form-control" id="role" name="role">
-      <option selected value="" disabled>Select</option>
-      <option value="admin">Admin</option>
-      <option value="manager">Manager</option>
-      <option value="customer">Customer</option>
-  </select>
+    </select>
   </div>
+  <div id="unexpected-error" class="error" style="display: none;"></div>
   <button type="submit" class="btn btn-primary" id="new-user-submit">Submit</button>
 </form>

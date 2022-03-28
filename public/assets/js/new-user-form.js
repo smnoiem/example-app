@@ -1,6 +1,17 @@
 
 $( document ).ready(function() {
 
+  $.ajax({
+    url: "role-options",
+    type: "GET",
+    data: {
+    },
+    cache: false,
+    success: function(response){
+        $("#role").html(response);
+    }
+  });
+
   $('#new-user-submit').on('click', function(event) {
 
     $('#new-user-form').validate({
@@ -60,6 +71,14 @@ $( document ).ready(function() {
     });
   });
 
+  $('#email').on('change', function() {
+    $('#email-exists').css('display', 'none');
+  });
+
+  $('#new-user-form').on('change', function() {
+    $('#unexpected-error').css('display', 'none');
+  });
+
   $('#new-user-form').on('submit', function(event) {
     event.preventDefault();
     var csrfToken = $("input[name=_token]").val();
@@ -72,8 +91,6 @@ $( document ).ready(function() {
 
     if(name && email && password && confirmPassword && address && role && password==confirmPassword) 
     {
-      //register through an ajax request
-      //console.log(csrfToken);
       $.ajax({
         async: false,
         url: "/users",
@@ -81,10 +98,30 @@ $( document ).ready(function() {
         data: {
             _token: csrfToken,
             name: name,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
+            address: address,
+            role: role,
         },
         cache: false,
         success: function(response){
           console.log(response);
+        },
+        error: function(xhr, status, error) {
+          var response_text = JSON.parse(xhr.responseText);
+          var errors = response_text.errors;
+          if(errors.hasOwnProperty('email')) {
+            $("#email-exists").html(errors.email[0]);
+            $("#email-exists").css("display", "block");
+            $('html, body').animate({
+              scrollTop: $("#email").offset().top
+            }, 300);
+          }
+          else {
+            $("#unexpected-error").html("<p>Unexpected Error!<p>");
+            $("#unexpected-error").css("display", "block");
+          }
         }
       });
     }

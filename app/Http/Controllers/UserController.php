@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -34,7 +36,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->name;
+        $validated = $request->validate([
+            'name' => 'required|max:20',
+            'email' => 'required|email|unique:App\Models\User,email|max:50',
+            'password' => 'required',
+            'confirmPassword' => 'required|same:password',
+            'address' => 'required|max:70',
+            'role' => 'required|exists:App\Models\Roles,id',
+        ]);
+
+        try{
+            $user = User::create([
+                'name' => $request->name, 
+                'email' => $request->email, 
+                'password' => bcrypt($request->password),
+                'address' => $request->address,
+                'role_id' => $request->role,
+            ]);
+            return $user->id;
+        }
+        catch (QueryException $e) {
+            $errorInfo = $e->errorInfo;
+            return $errorInfo[1];
+        }
     }
 
     /**
