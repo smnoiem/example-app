@@ -2,7 +2,7 @@
 $( document ).ready(function() {
 
   $.ajax({
-    url: "role-options",
+    url: "/role-options",
     type: "GET",
     data: {
     },

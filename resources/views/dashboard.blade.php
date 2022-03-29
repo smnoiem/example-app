@@ -59,6 +59,7 @@
                             </p>
                         </div>
                         <div class="tab-pane" id="userlist" role="tabpanel">
+                            @include('layouts.user-list-datatable')
                             <p class="mb-0">
                                 *. When open this tab load latest data via ajax. <br>
                                 *. Use datatables to show data as table. [you can find demo from html theme that provided to you or search google as datatabsles]
