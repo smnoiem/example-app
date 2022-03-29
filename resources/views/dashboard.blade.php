@@ -30,14 +30,14 @@
                     <p style="color:#c40b0b">Delete all instructions in tabs when you complete</p>
 
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
-                        <li class="nav-item">
+                    <ul id="nav-tabs" class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                        <li class="nav-item" id="add-new-user-btn">
                             <a class="nav-link active" data-toggle="tab" href="#adduser" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                                 <span class="d-none d-sm-block">Add new user</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="user-list-btn">
                             <a class="nav-link" data-toggle="tab" href="#userlist" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                 <span class="d-none d-sm-block">User list</span>
@@ -48,7 +48,7 @@
 
                     <!-- Tab panes -->
                     <div class="tab-content p-3 text-muted">
-                        <div class="tab-pane active" id="adduser" role="tabpanel">
+                        <div class="" id="adduser" role="tabpanel">
                             @include('layouts.new-user-form')
                             <p class="mb-0">
                                 *. Create a form here and include fields like name,email,password,address,roles. <br>
@@ -58,7 +58,7 @@
                                 *. Create necessary route,controller,model,view etc if required <br>
                             </p>
                         </div>
-                        <div class="tab-pane" id="userlist" role="tabpanel">
+                        <div class="" id="userlist" role="tabpanel">
                             @include('layouts.user-list-datatable')
                             <p class="mb-0">
                                 *. When open this tab load latest data via ajax. <br>

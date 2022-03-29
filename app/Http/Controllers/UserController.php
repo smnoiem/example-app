@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         
-        $users = User::all();
+        $users = User::with('role')->orderByDesc('created_at')->get();
         return view('layouts.user-rows', ['users' => $users]);
     }
 
@@ -44,7 +44,7 @@ class UserController extends Controller
             'password' => 'required',
             'confirmPassword' => 'required|same:password',
             'address' => 'required|max:70',
-            'role' => 'required|exists:App\Models\Roles,id',
+            'role' => 'required|exists:App\Models\Role,id',
         ]);
 
         try{
@@ -105,6 +105,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return User::destroy($id);
     }
 }

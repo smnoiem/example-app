@@ -18,8 +18,8 @@
 -->
 <script src="{{asset('assets/js/app.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-<script src="assets/js/new-user-form.js"></script>
 <script src="assets/js/user-list.js"></script>
+<script src="assets/js/new-user-form.js"></script>
 
 
  <!-- Required datatable js -->

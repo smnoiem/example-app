@@ -5,10 +5,10 @@
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->address }}</td>
-        <td>{{ $user->role_id }}</td>
+        <td>{{ $user->role->name }}</td>
         <td>
-          <div class="btn btn-danger">Delete</div>
-          <div class="btn btn-primary">&#9998;Edit</div>
+          <button class="btn btn-danger" id="delete-user-btn">Delete</button>
+          <button class="btn btn-primary" id="edit-user-btn">&#9998;Edit</button>
         </td>
       </tr>
   @endforeach

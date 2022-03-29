@@ -27,5 +27,6 @@
     </select>
   </div>
   <div id="unexpected-error" class="error" style="display: none;"></div>
-  <button type="submit" class="btn btn-primary" id="new-user-submit">Submit</button>
+  <div id="user-added-alert"></div>
+  <button type="submit" class="btn btn-primary" id="new-user-submit-btn">Submit</button>
 </form>

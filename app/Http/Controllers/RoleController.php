@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Roles;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
     public function getRoleOptions() {
-        $roles = Roles::select('id', 'name')->get();
+        $roles = Role::select('id', 'name')->get();
         return view('layouts.role-options', ['roles' => $roles]);
     }
 }

@@ -12,7 +12,7 @@ $( document ).ready(function() {
     }
   });
 
-  $('#new-user-submit').on('click', function(event) {
+  $('#new-user-submit-btn').on('click', function(event) {
 
     $('#new-user-form').validate({
   
@@ -106,7 +106,15 @@ $( document ).ready(function() {
         },
         cache: false,
         success: function(response){
-          console.log(response);
+          var newUserId = response;
+          fetchAllUsers();
+          $('#user-added-alert').html(`
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>User Added Successfully!</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>`);
         },
         error: function(xhr, status, error) {
           var response_text = JSON.parse(xhr.responseText);
