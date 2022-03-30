@@ -8,7 +8,8 @@ $( document ).ready(function() {
     },
     cache: false,
     success: function(response){
-        $("#role").html(response);
+      $("#role").html(response);
+      $("#edit-role").html(response);
     }
   });
 

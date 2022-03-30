@@ -58,7 +58,11 @@ $( document ).ready(function() {
 
   $('#datatable tbody').on('click', '#edit-user-btn', function () {
     var data = $('#datatable').DataTable().row(this).data();
-    console.log(data[0]);
+    $('input[name="username"]').val(data[1]);
+    $('input[name="email"]').val(data[2]);
+    $('input[name="address"]').val(data[3]);
+    $(`#edit-role option:contains("${data[4]}")`).prop('selected', true);
+    $("#exampleModalScrollable").modal('show');
   });
 
 });
