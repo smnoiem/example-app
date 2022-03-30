@@ -51,7 +51,15 @@ $( document ).ready(function() {
   });
 
   $('#datatable tbody').on('click', '#delete-user-btn', function () {
-    var data = $('#datatable').DataTable().row(this).data();
+    var data;
+    try{
+      data = $('#datatable').DataTable().row(this).data();
+    }
+    catch (e) { 
+    }
+    if(!data) {
+      data = $('#datatable').DataTable().row( $(this).parents('tr') ).data();
+    }
     var userId = data[0];
     deleteUser(userId);
   });
@@ -66,7 +74,6 @@ $( document ).ready(function() {
     if(!data) {
       data = $('#datatable').DataTable().row( $(this).parents('tr') ).data();
     }
-    console.log(data);
     $('#editUserId').val(data[0]);
     $('#editUsername').val(data[1]);
     $('#editEmail').val(data[2]);

@@ -111,9 +111,6 @@ $( document ).ready(function() {
             $("#edit-email-exists").html(errors.email[0]);
             $("#edit-email-exists").addClass("error");
             $("#edit-email-exists").css("display", "block");
-            $('html, body').animate({
-              scrollTop: $("#email").offset().top
-            }, 300);
           }
           else {
             $("#unexpected-edit-error").html("<p>Unexpected Error!<p>");
