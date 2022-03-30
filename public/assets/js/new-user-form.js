@@ -9,7 +9,7 @@ $( document ).ready(function() {
     cache: false,
     success: function(response){
       $("#role").html(response);
-      $("#edit-role").html(response);
+      $("#editRole").html(response);
     }
   });
 
@@ -117,8 +117,8 @@ $( document ).ready(function() {
             </button>
           </div>`);
         },
-        error: function(xhr, status, error) {
-          var response_text = JSON.parse(xhr.responseText);
+        error: function(res, status, error) {
+          var response_text = JSON.parse(res.responseText);
           var errors = response_text.errors;
           if(errors.hasOwnProperty('email')) {
             $("#email-exists").html(errors.email[0]);

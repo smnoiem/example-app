@@ -92,9 +92,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if($request->email == $user->email) 
+        {
+            $validated = $request->validate([
+                'name' => 'required|max:20',
+                'address' => 'required|max:70',
+                'role' => 'required|exists:App\Models\Role,id',
+            ]);
+        }
+        else 
+        {
+            $validated = $request->validate([
+                'name' => 'required|max:20',
+                'email' => 'required|email|unique:App\Models\User,email|max:50',
+                'address' => 'required|max:70',
+                'role' => 'required|exists:App\Models\Role,id',
+            ]);
+        }
+
+        try {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->address = $request->address;
+            $user->role_id = $request->role;
+            $user->save();
+            return "saved";
+        }
+        catch (QueryException $e) {
+            $errorInfo = $e->errorInfo;
+            return $errorInfo[1];
+        }
     }
 
     /**
