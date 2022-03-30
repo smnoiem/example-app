@@ -89,8 +89,9 @@ $( document ).ready(function() {
     var confirmPassword = $("#confirmPassword").val();
     var address = $("#address").val();
     var role = $("#role").val();
+    var isvalid = $("#new-user-form").valid();
 
-    if(name && email && password && confirmPassword && address && role && password==confirmPassword) 
+    if(name && email && password && confirmPassword && address && role && password==confirmPassword && isvalid) 
     {
       $.ajax({
         async: false,

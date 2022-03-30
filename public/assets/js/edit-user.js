@@ -72,8 +72,9 @@ $( document ).ready(function() {
     var email = $("#editEmail").val();
     var address = $("#editAddress").val();
     var role = $("#editRole").val();
+    var isvalid = $("#edit-user-form").valid();
 
-    if(userId && name && email && address && role) 
+    if(userId && name && email && address && role && isvalid) 
     {
       $.ajax({
         async: false,
